@@ -1,12 +1,46 @@
+
+//
+// RESPONSIVE SETUP
+// =G==============
+
+@screen-xs:                  480px;
+@screen-sm:                  768px;
+@screen-md:                  992px;
+@screen-lg:                  1200px;
+
+
+@container-tablet:             720px;
+@container-sm:                 @container-tablet;
+@container-desktop:            940px;
+@container-md:                 @container-desktop;
+@container-large-desktop:      1140px;
+@container-lg:                 @container-large-desktop;
+
 .content {
-  max-widt: 100%;
-  height: 300px;
+  @media (min-width: @screen-sm) {
+    width: @container-sm;
+  }
+  @media (min-width: @screen-md) {
+    width: @container-md;
+  }
+  @media (min-width: @screen-lg) {
+    width: @container-lg;
+  }
+}
+
+.content {
   border: 1px solid red;
+  margin: 0 auto;
+  overflow: hidden;
+  opacity: 0;
   .container {
-    height: inherit;
+    float: left;
     width: 33%;
     clear: right;
-    float: left;
-    background-color: blue;
+    img {
+      float: left;
+      width: 100%;
+      clear: right;
+    }
   }
 }

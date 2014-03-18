@@ -21,7 +21,26 @@
         theWidht = $this.width();
         theNumber = $(".container", $this).size();
         thePercentage = 100 / theNumber;
-        return $(".container").css("width", "" + thePercentage + "%");
+        $(".container").css("width", "" + thePercentage + "%");
+        setTimeout(function() {
+          var theImageHeight;
+          theImageHeight = $("img").innerHeight();
+          return $this.css({
+            "height": theImageHeight,
+            "opacity": 1
+          });
+        }, 100);
+        $(window).resize(function() {
+          var theImageHeight;
+          theImageHeight = $("img").innerHeight();
+          return $this.css({
+            "height": theImageHeight
+          });
+        });
+        return $(".container").each(function(index) {
+          index + 1;
+          return $(this).addClass("container-" + index);
+        });
       });
     }
   });
