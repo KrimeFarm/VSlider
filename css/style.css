@@ -1,0 +1,12 @@
+.content {
+  max-widt: 100%;
+  height: 300px;
+  border: 1px solid red;
+}
+.content .container {
+  height: inherit;
+  width: 33%;
+  clear: right;
+  float: left;
+  background-color: blue;
+}
