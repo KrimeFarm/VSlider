@@ -30,3 +30,9 @@ $.fn.extend
       $(".container").each (index) ->
         index +
         $(this).addClass "container-#{index}"
+
+      $(".container").each ->
+        $container = $(this)
+        setTimeout ->
+          $(".slide:first", $container).css "margin-top", "-200px"
+        , 500

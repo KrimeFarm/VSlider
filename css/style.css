@@ -35,23 +35,9 @@
   float: left;
   clear: right;
   height: inherit;
+  -webkit-transition: all 1s;
 }
 .slide p {
   text-align: center;
   font-size: 30px;
-}
-@media (min-width: 768px) {
-  .content {
-    width: 720px;
-  }
-}
-@media (min-width: 992px) {
-  .content {
-    width: 940px;
-  }
-}
-@media (min-width: 1200px) {
-  .content {
-    width: 1140px;
-  }
 }

@@ -5,7 +5,7 @@ module.exports = (grunt) ->
 
     # Compile CoffeeScript + Plugins
     coffee:
-      compileJoined:
+      compile:
         files:
           "js/bumping-slider.js": ["coffeescript/bumping-slider.coffee"]
           "js/main.js": ["coffeescript/main.coffee"]

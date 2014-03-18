@@ -3,8 +3,6 @@
 // RESPONSIVE SETUP
 // =G==============
 
-
-
 @screen-xs:                  480px;
 @screen-sm:                  768px;
 @screen-md:                  992px;
@@ -17,6 +15,12 @@
 @container-md:                 @container-desktop;
 @container-large-desktop:      1140px;
 @container-lg:                 @container-large-desktop;
+
+
+
+//
+// CONTENT
+// =G=====
 
 .content {
   @media (min-width: @screen-sm) {
@@ -48,26 +52,21 @@
   }
 }
 
+
+
+//
+// SLIDE CONTENT
+// =G==========
+
 .slide {
   width: 100%;
   float: left;
   clear: right;
   height: inherit;
+  -webkit-transition: all 1s;
 
   p {
     text-align: center;
     font-size: 30px;
-  }
-}
-
-.content {
-  @media (min-width: @screen-sm) {
-    width: @container-sm;
-  }
-  @media (min-width: @screen-md) {
-    width: @container-md;
-  }
-  @media (min-width: @screen-lg) {
-    width: @container-lg;
   }
 }

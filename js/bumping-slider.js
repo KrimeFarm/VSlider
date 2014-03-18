@@ -19,8 +19,15 @@
         var $this, theWidht;
         $this = $(this);
         theWidht = $this.width();
-        return $(".container").each(function(index) {
+        $(".container").each(function(index) {
           return index + $(this).addClass("container-" + index);
+        });
+        return $(".container").each(function() {
+          var $container;
+          $container = $(this);
+          return setTimeout(function() {
+            return $(".slide:first", $container).css("margin-top", "-200px");
+          }, 500);
         });
       });
     }
