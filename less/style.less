@@ -3,6 +3,8 @@
 // RESPONSIVE SETUP
 // =G==============
 
+
+
 @screen-xs:                  480px;
 @screen-sm:                  768px;
 @screen-md:                  992px;
@@ -31,16 +33,41 @@
 .content {
   border: 1px solid red;
   margin: 0 auto;
-  overflow: hidden;
-  opacity: 0;
+  background: red;
+  min-height: 200px;
+
   .container {
-    float: left;
-    width: 33%;
+    height: 200px;
     clear: right;
-    img {
+    overflow: hidden;
+
+    @media (min-width: @screen-sm) {
       float: left;
-      width: 100%;
-      clear: right;
+      width: 100% /3;
     }
+  }
+}
+
+.slide {
+  width: 100%;
+  float: left;
+  clear: right;
+  height: inherit;
+
+  p {
+    text-align: center;
+    font-size: 30px;
+  }
+}
+
+.content {
+  @media (min-width: @screen-sm) {
+    width: @container-sm;
+  }
+  @media (min-width: @screen-md) {
+    width: @container-md;
+  }
+  @media (min-width: @screen-lg) {
+    width: @container-lg;
   }
 }

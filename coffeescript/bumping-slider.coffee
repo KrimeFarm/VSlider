@@ -23,23 +23,10 @@ $.fn.extend
 
       theWidht = $this.width()
 
-      theNumber = $(".container", $this).size()
-      thePercentage = 100 / theNumber
-      $(".container").css "width", "#{thePercentage}%"
-
-      setTimeout ->
-        theImageHeight = $("img").innerHeight()
-        $this.css
-          "height": theImageHeight
-          "opacity": 1
-      , 100
-
-      $(window).resize ->
-        theImageHeight = $("img").innerHeight()
-        $this.css
-          "height": theImageHeight
+      # theNumber = $(".container", $this).size()
+      # thePercentage = 100 / theNumber
+      # $(".container").css "width", "#{thePercentage}%"
 
       $(".container").each (index) ->
-        index ++
+        index +
         $(this).addClass "container-#{index}"
-
