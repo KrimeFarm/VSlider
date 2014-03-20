@@ -35,7 +35,6 @@
   float: left;
   clear: right;
   height: inherit;
-  -webkit-transition: all 1s;
 }
 .slide p {
   text-align: center;

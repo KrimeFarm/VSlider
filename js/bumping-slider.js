@@ -7,7 +7,8 @@
     BumpingSlider: function(options) {
       var log, settings;
       settings = {
-        debug: true
+        debug: true,
+        slide_timing: 0.5
       };
       settings = $.extend(settings, options);
       log = function(msg) {
@@ -16,18 +17,38 @@
         }
       };
       return this.each(function() {
-        var $this, theWidht;
+        var $slide, $this, slideLenght, slideLenghtPartial, theNumber, transitionOff, transitionOn;
         $this = $(this);
-        theWidht = $this.width();
+        $slide = $(".slide", this);
+        transitionOn = function() {
+          $slide.css({
+            "webkit-transition": "all " + settings.slide_timing + "s ease-out",
+            "moz-transition": "all " + settings.slide_timing + "s ease-out",
+            "ms-transition": "all " + settings.slide_timing + "s ease-out",
+            "o-transition": "all " + settings.slide_timing + "s ease-out",
+            "transition": "all " + settings.slide_timing + "s ease-out"
+          });
+        };
+        transitionOff = function() {
+          $slide.css({
+            "webkit-transition": "none",
+            "moz-transition": "none",
+            "ms-transition": "none",
+            "o-transition": "none",
+            "transition": "none"
+          });
+        };
+        theNumber = $(".container", $this).size();
         $(".container").each(function(index) {
-          return index + $(this).addClass("container-" + index);
+          index + $(this).addClass("container-" + index);
+          return $(".slide", this).each(function(index) {
+            return index + $(this).addClass("slide-" + index);
+          });
         });
-        return $(".container").each(function() {
-          var $container;
-          $container = $(this);
-          return setTimeout(function() {
-            return $(".slide:first", $container).css("margin-top", "-200px");
-          }, 500);
+        slideLenght = $(".slide").size();
+        slideLenghtPartial = slideLenght / theNumber;
+        return $(".container-0").each(function() {
+          return $(".slide-0", this).clone().insertAfter(".slide-2");
         });
       });
     }
