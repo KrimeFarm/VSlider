@@ -8,7 +8,7 @@ $.fn.extend
     # Default settings
     settings =
       debug: true
-      slide_timing: 0.5
+      slide_timing: 1.5
 
     # Merge default settings with options.
     settings = $.extend settings, options
@@ -26,20 +26,20 @@ $.fn.extend
       # transitions on/off
       transitionOn = ->
         $slide.css
-          "webkit-transition" :"all #{settings.slide_timing}s ease-out"
-          "moz-transition" :"all #{settings.slide_timing}s ease-out"
-          "ms-transition" :"all #{settings.slide_timing}s ease-out"
-          "o-transition" :"all #{settings.slide_timing}s ease-out"
-          "transition" :"all #{settings.slide_timing}s ease-out"
+          "webkit-transition" : "all #{settings.slide_timing}s ease-out"
+          "moz-transition" : "all #{settings.slide_timing}s ease-out"
+          "ms-transition" : "all #{settings.slide_timing}s ease-out"
+          "o-transition" : "all #{settings.slide_timing}s ease-out"
+          "transition" : "all #{settings.slide_timing}s ease-out"
         return
 
       transitionOff = ->
         $slide.css
-          "webkit-transition" :"none"
-          "moz-transition" :"none"
-          "ms-transition" :"none"
-          "o-transition" :"none"
-          "transition" :"none"
+          "webkit-transition" : "none"
+          "moz-transition" : "none"
+          "ms-transition" : "none"
+          "o-transition" : "none"
+          "transition" : "none"
         return
 
       # theWidht = $this.width()
@@ -60,25 +60,35 @@ $.fn.extend
       slideLenghtPartial = slideLenght / theNumber
 
 
-      $(".container-0").each ->
-        $(".slide-0", this).clone().insertAfter(".slide-2")
+      cloningIndex = 0
+      while (cloningIndex < 3)
+        $(".container-#{cloningIndex} .slide-0", $this).clone().insertAfter(".container-#{cloningIndex} .slide-2", $this).attr("class", "slide slide-3")
+        cloningIndex++
 
-      # i = 0
-      # i2 = 0
-      # # nested interval
-      # loopii = setInterval ->
-      #   log "coap"
-      #   if i < 3
-      #     transitionOn()
-      #     $(".container-#{i} .slide-#{i2}").css "margin-top", -200
-      #     i++
-      #   else if i2 < 3
-      #     i2++
-      #     log i2
-      #     i = 0
-      #   else if i2 >= 3
-      #     transitionOff()
-      #     i2 = 0
-      #     i = 0
-      #     $(".container .slide").css "margin-top", ""
-      # , 500
+      i = 0
+      i2 = 0
+      # nested interval
+      theLoop = setInterval ->
+        if i < 3
+          insideLoop = setInterval ->
+            if i < 3
+              log "insideLoop"
+              transitionOn()
+              $(".container-#{i} .slide-#{i2}").css "margin-top", -200
+              i++
+            else
+              clearInterval(insideLoop)
+          , 300
+        else if i2 < 2
+          i2++
+          log i2
+          i = 0
+        else if i2 >= 2
+          transitionOff()
+          i2 = 0
+          i = 0
+          $(".container .slide").css "margin-top", ""
+      , 5000
+
+
+
