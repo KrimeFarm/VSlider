@@ -8,7 +8,7 @@ $.fn.extend
     # Default settings
     settings =
       debug: true
-      slide_timing: 1.5
+      slide_timing: 1
 
     # Merge default settings with options.
     settings = $.extend settings, options
@@ -26,11 +26,11 @@ $.fn.extend
       # transitions on/off
       transitionOn = ->
         $slide.css
-          "webkit-transition" : "all #{settings.slide_timing}s ease-out"
-          "moz-transition" : "all #{settings.slide_timing}s ease-out"
-          "ms-transition" : "all #{settings.slide_timing}s ease-out"
-          "o-transition" : "all #{settings.slide_timing}s ease-out"
-          "transition" : "all #{settings.slide_timing}s ease-out"
+          "webkit-transition" : "all #{settings.slide_timing}s cubic-bezier(1,.34,.83,.9)"
+          "moz-transition" : "all #{settings.slide_timing}s cubic-bezier(1,.34,.83,.9)"
+          "ms-transition" : "all #{settings.slide_timing}s cubic-bezier(1,.34,.83,.9)"
+          "o-transition" : "all #{settings.slide_timing}s cubic-bezier(1,.34,.83,.9)"
+          "transition" : "all #{settings.slide_timing}s cubic-bezier(1,.34,.83,.9)"
         return
 
       transitionOff = ->
@@ -88,7 +88,7 @@ $.fn.extend
           i2 = 0
           i = 0
           $(".container .slide").css "margin-top", ""
-      , 5000
+      , 2000
 
 
 
