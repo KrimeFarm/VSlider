@@ -1,6 +1,6 @@
 (function() {
   $(function() {
-    return $(".content").BumpingSlider();
+    return $(".content").ResponsiveSlider();
   });
 
 }).call(this);

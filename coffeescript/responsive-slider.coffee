@@ -4,11 +4,12 @@ $ = jQuery
 # Adds plugin object to jQuery
 $.fn.extend
   # Change pluginName to your plugin's name.
-  BumpingSlider: (options) ->
+  ResponsiveSlider: (options) ->
     # Default settings
     settings =
-      debug: true
+      debug: false
       slide_timing: 1
+      slide_effect: "cubic-bezier(1,.34,.83,.9)"
 
     # Merge default settings with options.
     settings = $.extend settings, options
@@ -23,31 +24,34 @@ $.fn.extend
       $this = $(this)
       $slide = $(".slide", this)
 
-      # transitions on/off
+      # css3 transitions
+      # on - off
       transitionOn = ->
         $slide.css
-          "webkit-transition" : "all #{settings.slide_timing}s cubic-bezier(1,.34,.83,.9)"
-          "moz-transition" : "all #{settings.slide_timing}s cubic-bezier(1,.34,.83,.9)"
-          "ms-transition" : "all #{settings.slide_timing}s cubic-bezier(1,.34,.83,.9)"
-          "o-transition" : "all #{settings.slide_timing}s cubic-bezier(1,.34,.83,.9)"
-          "transition" : "all #{settings.slide_timing}s cubic-bezier(1,.34,.83,.9)"
+          "webkit-transition" : "all #{settings.slide_timing}s #{settings.slide_effect}"
+          "moz-transition"    : "all #{settings.slide_timing}s #{settings.slide_effect}"
+          "ms-transition"     : "all #{settings.slide_timing}s #{settings.slide_effect}"
+          "o-transition"      : "all #{settings.slide_timing}s #{settings.slide_effect}"
+          "transition"        : "all #{settings.slide_timing}s #{settings.slide_effect}"
         return
 
       transitionOff = ->
         $slide.css
           "webkit-transition" : "none"
-          "moz-transition" : "none"
-          "ms-transition" : "none"
-          "o-transition" : "none"
-          "transition" : "none"
+          "moz-transition"    : "none"
+          "ms-transition"     : "none"
+          "o-transition"      : "none"
+          "transition"        : "none"
         return
 
-      # theWidht = $this.width()
-
+      # size of the slides has to be the same
+      # in every container
       theNumber = $(".container", $this).size()
-      # thePercentage = 100 / theNumber
-      # $(".container").css "width", "#{thePercentage}%"
+      thePartialNumber = theNumber - 1
+      log theNumber
 
+      # dynamically add classes to control
+      # the animation
       $(".container").each (index) ->
         index +
         $(this).addClass "container-#{index}"
@@ -56,22 +60,22 @@ $.fn.extend
           index +
           $(this).addClass "slide-#{index}"
 
-      slideLenght = $(".slide").size()
-      slideLenghtPartial = slideLenght / theNumber
-
-
+      # clone the last slide to mimic the continuous loop effect
       cloningIndex = 0
-      while (cloningIndex < 3)
+      while (cloningIndex < theNumber)
         $(".container-#{cloningIndex} .slide-0", $this).clone().insertAfter(".container-#{cloningIndex} .slide-2", $this).attr("class", "slide slide-3")
         cloningIndex++
 
+      # start the animation with double loop
+      # to give different timings for the second
+      # animated loop
       i = 0
       i2 = 0
       # nested interval
       theLoop = setInterval ->
-        if i < 3
+        if i < theNumber
           insideLoop = setInterval ->
-            if i < 3
+            if i < theNumber
               log "insideLoop"
               transitionOn()
               $(".container-#{i} .slide-#{i2}").css "margin-top", -200
@@ -79,11 +83,11 @@ $.fn.extend
             else
               clearInterval(insideLoop)
           , 300
-        else if i2 < 2
+        else if i2 < thePartialNumber
           i2++
           log i2
           i = 0
-        else if i2 >= 2
+        else if i2 >= thePartialNumber
           transitionOff()
           i2 = 0
           i = 0

@@ -7,7 +7,7 @@ module.exports = (grunt) ->
     coffee:
       compile:
         files:
-          "js/bumping-slider.js": ["coffeescript/bumping-slider.coffee"]
+          "js/responsive-slider.js": ["coffeescript/responsive-slider.coffee"]
           "js/main.js": ["coffeescript/main.coffee"]
 
     # Compile Less
@@ -24,7 +24,7 @@ module.exports = (grunt) ->
         mangle: false
       my_target:
         files:
-          "js/bumping-slider.min.js": ["js/bumping-slider.js"]
+          "js/bumping-slider.min.js": ["js/responsive-slider.js"]
 
     # Watch files changes and compile what it needs to be
     # compiled.
@@ -41,8 +41,6 @@ module.exports = (grunt) ->
         options:
           livereload: true
         files: ["*.html"]
-
-  # require('time-grunt')(grunt)
 
   grunt.loadNpmTasks "grunt-contrib-watch"
   grunt.loadNpmTasks "grunt-contrib-coffee"

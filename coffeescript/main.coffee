@@ -1,2 +1,2 @@
 $ ->
-  $(".content").BumpingSlider()
+  $(".content").ResponsiveSlider()
