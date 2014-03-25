@@ -7,7 +7,7 @@ module.exports = (grunt) ->
     coffee:
       compile:
         files:
-          "js/responsive-slider.js": ["coffeescript/responsive-slider.coffee"]
+          "js/v-slider.js": ["coffeescript/v-slider.coffee"]
           "js/main.js": ["coffeescript/main.coffee"]
 
     # Compile Less
@@ -24,7 +24,7 @@ module.exports = (grunt) ->
         mangle: false
       my_target:
         files:
-          "js/responsive-slider.min.js": ["js/responsive-slider.js"]
+          "js/v-slider.min.js": ["js/v-slider.js"]
 
     # Watch files changes and compile what it needs to be
     # compiled.
