@@ -1,4 +1,4 @@
-Responsive Slider
+VSlider
 =================
 
 This is a fairly stright forward **jQuery 2** plugin, compatible with **Bootstrap** that creates a responsive multi slider animated with **CSS3 transitions**.

@@ -4,7 +4,7 @@
   $ = jQuery;
 
   $.fn.extend({
-    ResponsiveSlider: function(options) {
+    vSlider: function(options) {
       var log, settings;
       settings = {
         debug: false,

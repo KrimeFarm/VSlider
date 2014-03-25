@@ -1,2 +1,2 @@
 $ ->
-  $(".content").ResponsiveSlider()
+  $(".content").vSlider()

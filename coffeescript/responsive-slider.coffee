@@ -4,7 +4,7 @@ $ = jQuery
 # Adds plugin object to jQuery
 $.fn.extend
   # Change pluginName to your plugin's name.
-  ResponsiveSlider: (options) ->
+  vSlider: (options) ->
     # Default settings
     settings =
       debug: false
