@@ -28,20 +28,20 @@ $.fn.extend
       # on - off
       transitionOn = ->
         $slide.css
-          "webkit-transition" : "all #{settings.slide_timing}s #{settings.slide_effect}"
-          "moz-transition"    : "all #{settings.slide_timing}s #{settings.slide_effect}"
-          "ms-transition"     : "all #{settings.slide_timing}s #{settings.slide_effect}"
-          "o-transition"      : "all #{settings.slide_timing}s #{settings.slide_effect}"
-          "transition"        : "all #{settings.slide_timing}s #{settings.slide_effect}"
+          "webkit-transition": "all #{settings.slide_timing}s #{settings.slide_effect}"
+          "moz-transition":    "all #{settings.slide_timing}s #{settings.slide_effect}"
+          "ms-transition":     "all #{settings.slide_timing}s #{settings.slide_effect}"
+          "o-transition":      "all #{settings.slide_timing}s #{settings.slide_effect}"
+          "transition":        "all #{settings.slide_timing}s #{settings.slide_effect}"
         return
 
       transitionOff = ->
         $slide.css
-          "webkit-transition" : "none"
-          "moz-transition"    : "none"
-          "ms-transition"     : "none"
-          "o-transition"      : "none"
-          "transition"        : "none"
+          "webkit-transition": "none"
+          "moz-transition":    "none"
+          "ms-transition":     "none"
+          "o-transition":      "none"
+          "transition":        "none"
         return
 
       # size of the slides has to be the same
@@ -93,6 +93,3 @@ $.fn.extend
           i = 0
           $(".container .slide").css "margin-top", ""
       , 2000
-
-
-

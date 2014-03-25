@@ -24,7 +24,7 @@ module.exports = (grunt) ->
         mangle: false
       my_target:
         files:
-          "js/bumping-slider.min.js": ["js/responsive-slider.js"]
+          "js/responsive-slider.min.js": ["js/responsive-slider.js"]
 
     # Watch files changes and compile what it needs to be
     # compiled.
