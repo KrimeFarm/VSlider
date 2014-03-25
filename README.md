@@ -31,7 +31,7 @@ This is a fairly stright forward **jQuery 2** plugin, compatible with **Bootstra
 
 This is a basic 3 slides block
 
-```less
+```scss
 .content {
   @media (min-width: @screen-sm) {
     width: @container-sm;
