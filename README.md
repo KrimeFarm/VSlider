@@ -70,3 +70,4 @@ The relative **less** configuration.
 `slide_timing` the css3 transition timing ( default 1s )
 
 `slide_effect` the css3 transition type ( default "cubic-bezier(1,.34,.83,.9)" )
+

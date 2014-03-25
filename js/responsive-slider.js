@@ -14,7 +14,9 @@
       settings = $.extend(settings, options);
       log = function(msg) {
         if (settings.debug) {
-          return typeof console !== "undefined" && console !== null ? console.log(msg) : void 0;
+          if (typeof console !== "undefined" && console !== null) {
+            console.log(msg);
+          }
         }
       };
       return this.each(function() {
@@ -44,8 +46,8 @@
         log(theNumber);
         $(".container").each(function(index) {
           index + $(this).addClass("container-" + index);
-          return $(".slide", this).each(function(index) {
-            return index + $(this).addClass("slide-" + index);
+          $(".slide", this).each(function(index) {
+            index + $(this).addClass("slide-" + index);
           });
         });
         cloningIndex = 0;
@@ -63,20 +65,20 @@
                 log("insideLoop");
                 transitionOn();
                 $(".container-" + i + " .slide-" + i2).css("margin-top", -200);
-                return i++;
+                i++;
               } else {
-                return clearInterval(insideLoop);
+                clearInterval(insideLoop);
               }
             }, 300);
           } else if (i2 < thePartialNumber) {
             i2++;
             log(i2);
-            return i = 0;
+            i = 0;
           } else if (i2 >= thePartialNumber) {
             transitionOff();
             i2 = 0;
             i = 0;
-            return $(".container .slide").css("margin-top", "");
+            $(".container .slide").css("margin-top", "");
           }
         }, 2000);
       });

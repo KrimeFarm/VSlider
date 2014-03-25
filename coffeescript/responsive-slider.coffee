@@ -17,6 +17,7 @@ $.fn.extend
     # Simple logger.
     log = (msg) ->
       console?.log msg if settings.debug
+      return
 
     # _Insert magic here._
     return @each ()->
@@ -55,10 +56,11 @@ $.fn.extend
       $(".container").each (index) ->
         index +
         $(this).addClass "container-#{index}"
-
         $(".slide", this).each (index) ->
           index +
           $(this).addClass "slide-#{index}"
+          return
+        return
 
       # clone the last slide to mimic the continuous loop effect
       cloningIndex = 0
@@ -80,16 +82,20 @@ $.fn.extend
               transitionOn()
               $(".container-#{i} .slide-#{i2}").css "margin-top", -200
               i++
+              return
             else
               clearInterval(insideLoop)
+              return
           , 300
         else if i2 < thePartialNumber
           i2++
           log i2
           i = 0
+          return
         else if i2 >= thePartialNumber
           transitionOff()
           i2 = 0
           i = 0
           $(".container .slide").css "margin-top", ""
+          return
       , 2000
