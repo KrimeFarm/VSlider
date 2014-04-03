@@ -7,9 +7,10 @@ $.fn.extend
   vSlider: (options) ->
     # Default settings
     settings =
-      debug: true
-      slide_timing: 0.4
+      debug: false
+      slide_timing: 0.8
       loop_timing: 2
+      time_fix: 300
       slide_effect: "cubic-bezier(1,.34,.83,.9)"
 
     # Merge default settings with options.
@@ -87,7 +88,7 @@ $.fn.extend
             else
               clearInterval(insideLoop)
               return
-          , (settings.loop_timing / theNumber) * 1000
+          , (settings.loop_timing / theNumber) * (settings.time_fix)
         else if i2 < thePartialNumber
           i2++
           i = 0
