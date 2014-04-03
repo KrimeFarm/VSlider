@@ -7,8 +7,9 @@ $.fn.extend
   vSlider: (options) ->
     # Default settings
     settings =
-      debug: false
-      slide_timing: 1
+      debug: true
+      slide_timing: 0.4
+      loop_timing: 2
       slide_effect: "cubic-bezier(1,.34,.83,.9)"
 
     # Merge default settings with options.
@@ -48,8 +49,9 @@ $.fn.extend
       # size of the slides has to be the same
       # in every container
       theNumber = $(".container", $this).size()
-      thePartialNumber = theNumber - 1
-      log theNumber
+      theSlides = $(".slide", $this).size()
+      thePartialNumber = ( theSlides / theNumber ) - 1
+      log thePartialNumber
 
       # dynamically add classes to control
       # the animation
@@ -65,7 +67,7 @@ $.fn.extend
       # clone the last slide to mimic the continuous loop effect
       cloningIndex = 0
       while (cloningIndex < theNumber)
-        $(".container-#{cloningIndex} .slide-0", $this).clone().insertAfter(".container-#{cloningIndex} .slide-2", $this).attr("class", "slide slide-3")
+        $(".container-#{cloningIndex} .slide-0", $this).clone().insertAfter(".container-#{cloningIndex} .slide-#{thePartialNumber}", $this).attr("class", "slide slide-#{thePartialNumber + 1}")
         cloningIndex++
 
       # start the animation with double loop
@@ -78,7 +80,6 @@ $.fn.extend
         if i < theNumber
           insideLoop = setInterval ->
             if i < theNumber
-              log "insideLoop"
               transitionOn()
               $(".container-#{i} .slide-#{i2}").css "margin-top", -200
               i++
@@ -86,10 +87,9 @@ $.fn.extend
             else
               clearInterval(insideLoop)
               return
-          , 300
+          , (settings.loop_timing / theNumber) * 1000
         else if i2 < thePartialNumber
           i2++
-          log i2
           i = 0
           return
         else if i2 >= thePartialNumber
@@ -98,4 +98,4 @@ $.fn.extend
           i = 0
           $(".container .slide").css "margin-top", ""
           return
-      , 2000
+      , settings.loop_timing * 1000
